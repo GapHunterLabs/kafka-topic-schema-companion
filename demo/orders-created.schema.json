@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "required": ["orderId", "customer", "status", "items"],
+  "properties": {
+    "orderId": { "type": "string" },
+    "customer": { "type": "string" },
+    "status": { "type": "string", "enum": ["pending", "shipped", "cancelled"] },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sku", "qty"],
+        "properties": {
+          "sku": { "type": "string" },
+          "qty": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

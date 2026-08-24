@@ -1,0 +1,8 @@
+{
+  "orderId": "ORD-1001",
+  "customer": "acmecorp-billing",
+  "status": "delivered",
+  "items": [
+    { "sku": "WIDGET-A", "qty": "three" }
+  ]
+}
