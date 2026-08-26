@@ -11,6 +11,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiManager
 import dev.gaphunter.kafkatopicschemacompanion.pairing.SchemaFilePairing
+import dev.gaphunter.kafkatopicschemacompanion.review.ReviewPrompt
 import dev.gaphunter.kafkatopicschemacompanion.validate.JsonSchemaValidator
 
 /**
@@ -44,13 +45,15 @@ class KafkaMessageSchemaInspection : LocalInspectionTool() {
 
         val problems = violations.mapNotNull { violation ->
             val anchor = leafOf(violation.element)
-            manager.createProblemDescriptor(
+            val problem = manager.createProblemDescriptor(
                 anchor,
                 TextRange(0, anchor.textLength),
                 "Kafka message schema mismatch (${schemaFileName}) at ${violation.path}: ${violation.message}",
                 ProblemHighlightType.GENERIC_ERROR_OR_WARNING,
                 isOnTheFly,
             )
+            ReviewPrompt.recordHit(file.project, "${virtualFile.path}:${violation.path}")
+            problem
         }
 
         return if (problems.isEmpty()) null else problems.toTypedArray()

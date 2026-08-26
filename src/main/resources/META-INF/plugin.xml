@@ -36,5 +36,6 @@
             enabledByDefault="true"
             level="WARNING"
             implementationClass="dev.gaphunter.kafkatopicschemacompanion.inspection.KafkaMessageSchemaInspection"/>
+        <notificationGroup id="Kafka Topic Schema Companion" displayType="BALLOON"/>
     </extensions>
 </idea-plugin>
