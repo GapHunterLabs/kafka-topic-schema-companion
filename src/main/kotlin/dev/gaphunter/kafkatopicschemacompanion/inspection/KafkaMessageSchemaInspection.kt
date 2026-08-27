@@ -59,7 +59,7 @@ class KafkaMessageSchemaInspection : LocalInspectionTool() {
         return if (problems.isEmpty()) null else problems.toTypedArray()
     }
 
-    /** Leaf-anchored, never a composite node (`SDK_GOTCHAS.md` §20) -- an object/array violation (e.g. "missing required property") anchors on that node's own opening brace/bracket, its real first leaf token. */
+    /** Leaf-anchored, never a composite node -- an object/array violation (e.g. "missing required property") anchors on that node's own opening brace/bracket, its real first leaf token. */
     private fun leafOf(element: PsiElement): PsiElement {
         var current = element
         while (current.firstChild != null) current = current.firstChild
