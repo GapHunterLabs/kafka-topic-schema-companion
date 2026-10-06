@@ -1,0 +1,11 @@
+<html>
+<body>
+Reports where a Kafka sample message file (<code>&lt;topic&gt;.sample.json</code> or
+<code>&lt;topic&gt;.message.json</code>) does not match the JSON Schema in the sibling <code>&lt;topic&gt;.schema.json</code>:
+a wrong type, a missing required property, or a value outside a declared enum.
+<!-- tooltip end -->
+<p>Each mismatch is marked at its exact location in the sample, with no broker or schema registry involved. The
+common JSON Schema subset is supported: <code>type</code>, <code>required</code>, <code>properties</code>,
+<code>items</code> and <code>enum</code>.</p>
+</body>
+</html>
